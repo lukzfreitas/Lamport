@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c08b18a-ce20-44c5-b35e-e7a29dfd3a2f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/out/production/Lamport/eventos.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Lamport/eventos.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/LamportThreadReceive.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LamportThreadReceive.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LamportThreadSend.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LamportThreadSend.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -53,11 +51,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/LamportThreadReceive.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="278">
-              <caret line="48" column="20" selection-start-line="48" selection-start-column="20" selection-end-line="48" selection-end-column="20" />
+              <caret line="49" column="17" selection-start-line="49" selection-start-column="17" selection-end-line="49" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -65,11 +63,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/LamportThreadSend.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="178">
-              <caret line="58" column="44" lean-forward="true" selection-start-line="58" selection-start-column="44" selection-end-line="58" selection-end-column="44" />
+              <caret line="46" column="60" selection-start-line="46" selection-start-column="60" selection-end-line="46" selection-end-column="60" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -95,8 +93,8 @@
         <option value="$PROJECT_DIR$/src/Evento.java" />
         <option value="$PROJECT_DIR$/src/Process.java" />
         <option value="$PROJECT_DIR$/src/Lamport.java" />
-        <option value="$PROJECT_DIR$/src/LamportThreadSend.java" />
         <option value="$PROJECT_DIR$/src/LamportThreadReceive.java" />
+        <option value="$PROJECT_DIR$/src/LamportThreadSend.java" />
       </list>
     </option>
   </component>
@@ -229,20 +227,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/LamportThreadSend.java">
+    <entry file="file://$PROJECT_DIR$/src/LamportThreadReceive.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="58" column="44" lean-forward="true" selection-start-line="58" selection-start-column="44" selection-end-line="58" selection-end-column="44" />
+        <state relative-caret-position="278">
+          <caret line="49" column="17" selection-start-line="49" selection-start-column="17" selection-end-line="49" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/LamportThreadReceive.java">
+    <entry file="file://$PROJECT_DIR$/src/LamportThreadSend.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="48" column="20" selection-start-line="48" selection-start-column="20" selection-end-line="48" selection-end-column="20" />
+        <state relative-caret-position="178">
+          <caret line="46" column="60" selection-start-line="46" selection-start-column="60" selection-end-line="46" selection-end-column="60" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
