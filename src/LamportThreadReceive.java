@@ -20,6 +20,13 @@ public class LamportThreadReceive extends Thread {
         socket.send(sendPacket);
     }
 
+    private void gravarEvento(String evento) throws IOException {
+        System.out.println(evento.trim());
+        BufferedWriter writer = new BufferedWriter(new FileWriter("eventos.txt", true));
+        writer.append("\n");
+        writer.append(evento.trim());
+        writer.close();
+    }
 
     public void run() {
         try {
@@ -39,18 +46,19 @@ public class LamportThreadReceive extends Thread {
                 String tpMsg = listEvent[3].trim();
                 if (tempoReceive > tempo) tempo = tempoReceive;
 
-                if (idProcessReceive == process.getId() && !tpMsg.equals("r")) {
+                if (!tpMsg.equals("r")) {
                     enviaMensagem(receivePacket, evento);
                 }
 
-                if (idProcessReceive != process.getId() && tpMsg.equals("r")) {
-                    evento = Evento.receive(
+                if (idProcessReceive != process.getId() && tpMsg.equals("s")) {
+                    String eventoReceive = Evento.receive(
                             Integer.parseInt(listEvent[4].trim()),
                             tempo,
                             Integer.parseInt(listEvent[1].trim()),
                             tempoReceive
                     );
-                    enviaMensagem(receivePacket, evento);
+                    gravarEvento(eventoReceive);
+                    enviaMensagem(receivePacket, "r");
                 }
             }
         } catch (IOException e) {

@@ -64,12 +64,15 @@ public class LamportThreadSend extends Thread {
                     DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
                     socket.receive(receivePacket);
                     String mensagem = new String(receivePacket.getData());
-                    String[] listEvent = mensagem.split(" ");
-                    int tempoReceive = Integer.parseInt(listEvent[2].trim());
-                    if (tempoReceive > tempo) {
-                        mensagem = atualizaTempoDoEvento(listEvent, tempoReceive);
+                    if (!mensagem.trim().equals("r")) {
+                        String[] listEvent = mensagem.split(" ");
+                        int tempoReceive = Integer.parseInt(listEvent[2].trim());
+                        if (tempoReceive > tempo) {
+                            mensagem = atualizaTempoDoEvento(listEvent, tempoReceive);
+                        }
+                        gravarEvento(mensagem);
                     }
-                    gravarEvento(mensagem);
+
 
                     try {
                         Thread.sleep(2000);
