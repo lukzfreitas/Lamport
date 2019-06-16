@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c08b18a-ce20-44c5-b35e-e7a29dfd3a2f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/LamportThreadReceive.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LamportThreadReceive.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LamportThreadSend.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LamportThreadSend.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -66,8 +66,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/LamportThreadSend.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="178">
-              <caret line="46" column="60" selection-start-line="46" selection-start-column="60" selection-end-line="46" selection-end-column="60" />
+            <state relative-caret-position="80">
+              <caret line="46" column="71" selection-start-line="46" selection-start-column="59" selection-end-line="46" selection-end-column="71" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -239,8 +239,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/LamportThreadSend.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="46" column="60" selection-start-line="46" selection-start-column="60" selection-end-line="46" selection-end-column="60" />
+        <state relative-caret-position="80">
+          <caret line="46" column="71" selection-start-line="46" selection-start-column="59" selection-end-line="46" selection-end-column="71" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
