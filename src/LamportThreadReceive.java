@@ -3,20 +3,13 @@ import java.net.*;
 
 public class LamportThreadReceive extends Thread {
 
-    private int port;
+    private Process process;
     private int tempo;
     private DatagramSocket socket;
 
-    public LamportThreadReceive(int port) {
-        this.port = port;
+    public LamportThreadReceive(Process process) {
+        this.process = process;
         this.tempo = 0;
-    }
-
-    private void gravarEvento(String evento) throws IOException {
-        BufferedWriter writer = new BufferedWriter(new FileWriter("eventos.txt", true));
-        writer.append("\n");
-        writer.append(evento);
-        writer.close();
     }
 
     private void enviaMensagem(DatagramPacket datagramPacket, String mensagem) throws IOException {
@@ -27,18 +20,10 @@ public class LamportThreadReceive extends Thread {
         socket.send(sendPacket);
     }
 
-    private String atualizaTempoDoEvento(String [] listEvento, int tempo) {
-        listEvento[2] = tempo+"";
-        String mensagem = "";
-        for (String evento: listEvento) {
-            mensagem += evento;
-        }
-        return mensagem;
-    }
 
     public void run() {
         try {
-            socket = new DatagramSocket(port);
+            socket = new DatagramSocket(process.getPort());
 
             while (true) {
 
@@ -49,30 +34,22 @@ public class LamportThreadReceive extends Thread {
                 String[] listEvent = evento.split(" ");
                 tempo++;
 
-                String tipo = listEvent[3].trim();
+                int idProcessReceive = Integer.parseInt(listEvent[1].trim());
+                int tempoReceive = Integer.parseInt(listEvent[2].trim());
+                String tpMsg = listEvent[3].trim();
+                if (tempoReceive > tempo) tempo = tempoReceive;
 
-                if (tipo.equals("l")) {
-                    int tempoReceive = Integer.parseInt(listEvent[2].trim());
-                    if (tempoReceive > tempo) {
-                        tempo = tempoReceive;
-//                        evento = atualizaTempoDoEvento(listEvent, tempoReceive);
-                    }
+                if (idProcessReceive == process.getId() && !tpMsg.equals("r")) {
                     enviaMensagem(receivePacket, evento);
                 }
 
-                if (tipo.equals("s")) {
-                    int tempoReceive = Integer.parseInt(listEvent[2].trim());
-                    if (tempoReceive > tempo ) {
-                        tempo = tempoReceive;
-//                        evento = atualizaTempoDoEvento(listEvent, tempoReceive);
-                    }
-                    String receive = Evento.receive(
+                if (idProcessReceive != process.getId() && tpMsg.equals("r")) {
+                    evento = Evento.receive(
                             Integer.parseInt(listEvent[4].trim()),
                             tempo,
                             Integer.parseInt(listEvent[1].trim()),
                             tempoReceive
                     );
-                    gravarEvento(receive);
                     enviaMensagem(receivePacket, evento);
                 }
             }

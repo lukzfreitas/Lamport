@@ -1,6 +1,4 @@
-import javax.xml.crypto.Data;
 import java.io.*;
-import java.net.*;
 import java.util.*;
 
 public class Lamport {
@@ -32,7 +30,7 @@ public class Lamport {
 
         Process myProcess = processes.get(id - 1);
 
-        new LamportThreadReceive(myProcess.getPort()).start();
+        new LamportThreadReceive(myProcess).start();
         new LamportThreadSend(myProcess.getId(), processes, myProcess.getPort()).start();
     }
 }
