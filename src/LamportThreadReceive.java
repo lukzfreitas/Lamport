@@ -28,6 +28,15 @@ public class LamportThreadReceive extends Thread {
         writer.close();
     }
 
+    private String atualizaTempoDoEvento(String [] listEvento) {
+        listEvento[2] = tempo+"";
+        String mensagem = "";
+        for (String evento: listEvento) {
+            mensagem += evento + " ";
+        }
+        return mensagem;
+    }
+
     public void run() {
         try {
             socket = new DatagramSocket(process.getPort());
@@ -39,18 +48,20 @@ public class LamportThreadReceive extends Thread {
                 socket.receive(receivePacket);
                 String evento = new String(receivePacket.getData());
                 String[] listEvent = evento.split(" ");
-                tempo++;
 
                 int idProcessReceive = Integer.parseInt(listEvent[1].trim());
                 int tempoReceive = Integer.parseInt(listEvent[2].trim());
                 String tpMsg = listEvent[3].trim();
 
-                if (tempoReceive > tempo) tempo = tempoReceive;
+                if (tempoReceive > tempo) {
+                    tempo = tempoReceive;
+                }
 
                 // mensagem local ou send para o mesmo processo
                 if (idProcessReceive == process.getId()) {
                     enviaMensagem(receivePacket, evento);
-                } else { // mensagem para outro processo
+                }
+                if (idProcessReceive != process.getId() && tpMsg.equals("s")) { // mensagem para outro processo
                     String eventoReceive = Evento.receive(
                             Integer.parseInt(listEvent[4].trim()),
                             tempo,
@@ -58,7 +69,7 @@ public class LamportThreadReceive extends Thread {
                             tempoReceive
                     );
                     gravarEvento(eventoReceive);
-                    enviaMensagem(receivePacket, "r");
+                    enviaMensagem(receivePacket, evento);
                 }
             }
         } catch (IOException e) {
