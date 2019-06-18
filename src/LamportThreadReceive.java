@@ -64,11 +64,12 @@ public class LamportThreadReceive extends Thread {
                 if (idProcessReceive != process.getId() && tpMsg.equals("s")) { // mensagem para outro processo
                     String eventoReceive = Evento.receive(
                             Integer.parseInt(listEvent[4].trim()),
-                            tempo,
+                            tempo + 1,
                             Integer.parseInt(listEvent[1].trim()),
                             tempoReceive
                     );
                     gravarEvento(eventoReceive);
+                    tempo = tempo + 1;
                     enviaMensagem(receivePacket, evento);
                 }
             }

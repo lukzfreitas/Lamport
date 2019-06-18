@@ -14,7 +14,7 @@ public class LamportThreadSend extends Thread {
         this.idOrigem = idOrigem;
         this.processes = processes;
         this.port = port;
-        this.tempo = 0;
+        this.tempo = 1;
     }
 
     private void gravarEvento(String evento) throws IOException {
@@ -41,7 +41,7 @@ public class LamportThreadSend extends Thread {
             socket = new DatagramSocket();
             while (tempo < 1000) {
                 try {
-                    tempo++;
+//                    tempo++;
                     Random gerador = new Random();
                     int indexDestino = gerador.nextInt(processes.size());
                     Process processDestino = processes.get(indexDestino);
@@ -76,7 +76,7 @@ public class LamportThreadSend extends Thread {
                     } catch(InterruptedException ex) {
 
                     }
-
+                    tempo = tempo + 1;
                 } catch (UnknownHostException e) {
                     e.printStackTrace();
                 }
