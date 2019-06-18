@@ -46,6 +46,12 @@ public class LamportThreadSend extends Thread {
                     int indexDestino = gerador.nextInt(processes.size());
                     Process processDestino = processes.get(indexDestino);
                     InetAddress IPAddress = InetAddress.getByName(processDestino.getHost());
+                    while (!IPAddress.isReachable(1000)) {
+                        indexDestino = gerador.nextInt(processes.size());
+                        processDestino = processes.get(indexDestino);
+                        IPAddress = InetAddress.getByName(processDestino.getHost());
+                    }
+
                     String evento = "";
 
                     // Envia Mensagem
